@@ -30,7 +30,8 @@ app.get('/news/:id', async (req, res) => {
     let a= await knex("vNode_ArchNews").where( {programId:req.params.id})
     a.forEach(aa=>{a.isArchive=true})
     r.push(...a)
-    r.forEach(rr=>{rr.dt=moment(rr.NewsDate).format("DD.MM.YYYY")})
+    r.forEach(rr=>{rr.dt=moment(rr.NewsDate).format("DD.MM.YYYY"); dt.unix=moment(rr.NewsDate).unix()})
+    r.sort((a,b)=>{return a.unix-b.unix});
     res.render("news", {news:r})
 })
 
