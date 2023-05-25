@@ -1,6 +1,7 @@
 const express = require('express')
 const path=require('path')
 const app = express()
+const moment=require("moment")
 const port = 3000
 var knex = require('knex')({
     client: 'mssql',
@@ -29,6 +30,7 @@ app.get('/news/:id', async (req, res) => {
     let a= await knex("vNode_ArchNews").where( {programId:req.params.id})
     a.forEach(aa=>{a.isArchive=true})
     r.push(...a)
+    r.forEach(rr=>{rr.dt=moment(rr.NewsDate).format("DD.MM.YYYY")})
     res.render("news", {news:r})
 })
 
