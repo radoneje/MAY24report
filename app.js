@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'pug')
 
 app.get('/', async (req, res) => {
-   let r= knex("Programs").where( {deleted:false}).where("id",">","0")
+   let r= await knex("Programs").where( {deleted:false}).where("id",">","0")
     res.render('index', { title: 'Hey', message: 'Hello there!', prog:r })
 })
 
