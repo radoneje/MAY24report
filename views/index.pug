@@ -15,8 +15,8 @@ html
                 width: 300px;
                 box-sizing: border-box;
                 padding: 12px;
-                height: calc(100vh - 100px);
-                overflow: scroll;
+                height: calc(100vh - 52px);
+                overflow-y: auto;
             }
             .newsItem{
                 cursor: pointer;
@@ -35,6 +35,12 @@ html
             async function changeProg(id){
                 let dt=await axios.get("/news/"+id);
                 document.querySelector(".newsContainer").innerHTML=dt.data
+                document.querySelectorAll(".newsItem").forEach(e=>{
+                    e.onclick=async()=>{
+                        alert("click")
+                    }
+
+                })
             }
 
 
