@@ -41,5 +41,10 @@ app.get('/blocks/:id', async (req, res) => {
     res.render("blocks", {blocks:r})
 })
 
+app.get('/archblocks/:id', async (req, res) => {
+    let r= await knex("vNode_archblocks").where( {NewsId:id}).orderBy("sort")
+    res.render("blocks", {blocks:r})
+})
+
 
 
