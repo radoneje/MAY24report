@@ -1,6 +1,7 @@
 .blocksWr
     each b in blocks
-        .blockItem(id=b.id)
+        .blockItem.mt-2(id=b.id)
             .blockItemTitleWr
                 .blockItemType #{b.type}
                 .blockItemTitle #{b.Name}
+            .blockItemText #{b.BlockText}
