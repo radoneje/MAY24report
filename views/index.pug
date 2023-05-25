@@ -41,9 +41,9 @@ html
                         let newsid=e.getAttribute("newsid")
                         let blocks;
                         if(e.getAttribute("isarchive"))
-                            blocks =await axios.get("/archblocks/"+id);
+                            blocks =await axios.get("/archblocks/"+newsid);
                         else
-                            blocks =await axios.get("/blocks/"+id);
+                            blocks =await axios.get("/blocks/"+newsid);
                         document.querySelector(".blockContainer").innerHTML = blocks.data
                     }
 
