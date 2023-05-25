@@ -27,7 +27,7 @@ app.listen(port, () => {
 app.get('/news/:id', async (req, res) => {
     let r= await knex("vNode_News").where( {programId:req.params.id})
     let a= await knex("vNode_ArchNews").where( {programId:req.params.id})
-    a.forEach(aa=>{a.isArchive=treu;})
+    a.forEach(aa=>{a.isArchive=true})
     r.push(...a)
     res.render("news", {news:r})
 })
