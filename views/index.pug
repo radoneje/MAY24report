@@ -14,7 +14,7 @@ html
                         option(value=p.id) !{p.Name}
         script.
             async function changeProg(id){
-                let dt=async axios.get("/news/"+id);
+                let dt=await axios.get("/news/"+id);
             }
 
 
