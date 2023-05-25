@@ -1,5 +1,5 @@
 .news
     each n in news
-        .newsItem.mb-2
+        .newsItem.mb-2(isArchive=n.isArchive)
             .newsItemTitle #{n.Name}
             .newsItemDate #{n.dt}
