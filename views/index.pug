@@ -39,6 +39,16 @@ html
                 width: 100px;
                 margin-right: 12px;
             }
+            .blockItemText{
+                white-space: break-spaces;
+                padding-left: 20px;
+                box-sizing: border-box;
+                width: calc(100% - 20px);
+                display: none;
+            }
+            .blockItem.expand .blockItemText{
+                display: block;
+            }
     body
         .container
             #app
@@ -62,6 +72,11 @@ html
                         else
                             blocks =await axios.get("/blocks/"+newsid);
                         document.querySelector(".blockContainer").innerHTML = blocks.data
+                        document.querySelectorAll(".blockItem").forEach(e=>{
+                            e.querySelector(".blockItemTitleWr").onclick=()=>{
+                                e.classList.toggle("expand")
+                            }
+                        })
                     }
 
                 })
