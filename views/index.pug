@@ -6,7 +6,7 @@ html
     body
         .container
             select(class="form-select" aria-label="Default select example")
-                option(value=0) selected>Выберите программу
+                option(value=0) selected Выберите программу
                 each p in prog
-                    option(value="p.id") p.name
+                    option(value="p.id") !{p.name}
 
