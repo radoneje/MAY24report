@@ -36,13 +36,13 @@ app.get('/news/:id', async (req, res) => {
     res.render("news", {news:r})
 })
 app.get('/blocks/:id', async (req, res) => {
-    let r= await knex("vNode_blocks").where( {NewsId:id}).orderBy("sort")
+    let r= await knex("vNode_blocks").where( {NewsId:req.params.id}).orderBy("sort")
 
     res.render("blocks", {blocks:r})
 })
 
 app.get('/archblocks/:id', async (req, res) => {
-    let r= await knex("vNode_archblocks").where( {NewsId:id}).orderBy("sort")
+    let r= await knex("vNode_archblocks").where( {NewsId:req.params.id}).orderBy("sort")
     res.render("blocks", {blocks:r})
 })
 
