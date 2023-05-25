@@ -7,16 +7,11 @@ html
         <script src="/axios.min.js">
     body
         .container
-            #app
+
                 select.mt-2( class="form-select" aria-label="Default select example" onchange="changeProg(this.value)")
                     option(value=0) selected Выберите программу
                     each p in prog
                         option(value=p.id) !{p.Name}
-        script.
-            async function changeProg(id){
-                if(id>0){
-                    let dt = axios.get("/news/"+id)
-                }
-            }
+
 
 
