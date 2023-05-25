@@ -24,5 +24,12 @@ app.get('/', async (req, res) => {
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
+app.get('/news/:id', async (req, res) => {
+    let r= await knex("vNode_News").where( {programId:req.params.id})
+    let a= await knex("vNode_ArchNews").where( {programId:req.params.id})
+    a.forEach(aa=>{a.isArchive=treu;})
+    r.push(...a)
+    res.render("news", {news:r})
+})
 
 
