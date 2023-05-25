@@ -32,7 +32,7 @@ app.get('/news/:id', async (req, res) => {
 
     r.push(...a)
     r.forEach(rr=>{rr.dt=moment(rr.NewsDate).format("DD.MM.YYYY"); rr.unix=moment(rr.NewsDate).unix()})
-    r.sort((a,b)=>{return a.unix-b.unix});
+    r.sort((a,b)=>{return b.unix-a.unix});
     res.render("news", {news:r})
 })
 app.get('/blocks/:id', async (req, res) => {
