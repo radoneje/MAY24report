@@ -26,7 +26,7 @@ html
         .container
             #app
                 select.mt-2( class="form-select" aria-label="Default select example" onchange="changeProg(this.value)")
-                    option(value=0) selected Выберите программу
+                    option(value=0) Выберите программу
                     each p in prog
                         option(value=p.id) !{p.Name}
             .workContainer
@@ -37,7 +37,10 @@ html
                 document.querySelector(".newsContainer").innerHTML=dt.data
                 document.querySelectorAll(".newsItem").forEach(e=>{
                     e.onclick=async()=>{
-                        alert("click")
+                        let newsid=e.getAttribute("newsid")
+                        let blocks;
+
+                        blocks =await axios.get("/news/"+id);
                     }
 
                 })
