@@ -6,17 +6,19 @@ html
         <script src="/vue.min.js">
         <script src="/axios.min.js">
     body
-        .container#app
-            select.mt-2( class="form-select" aria-label="Default select example")
-                option(value=0) selected Выберите программу
-                each p in prog
-                    option(value=p.id) !{p.Name}
+        .container
+            #app
+                select.mt-2( class="form-select" aria-label="Default select example")
+                    option(value=0) selected Выберите программу
+                    each p in prog
+                        option(value=p.id) !{p.Name}
         script.
             let app=new Vue({
-                el:"app",
+                el:"#app",
                 data:{
                     prog:0
                 },
+                methods:{},
                 mounted:function (){
                     console.log("ready")
                 }
