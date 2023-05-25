@@ -35,5 +35,11 @@ app.get('/news/:id', async (req, res) => {
     r.sort((a,b)=>{return a.unix-b.unix});
     res.render("news", {news:r})
 })
+app.get('/blocks/:id', async (req, res) => {
+    let r= await knex("vNode_blocks").where( {NewsId:id}).orderBy("sort")
+
+    res.render("blocks", {blocks:r})
+})
+
 
 

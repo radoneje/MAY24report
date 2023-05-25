@@ -31,6 +31,7 @@ html
                         option(value=p.id) !{p.Name}
             .workContainer
                 .newsContainer
+                .blockContainer
         script.
             async function changeProg(id){
                 let dt=await axios.get("/news/"+id);
@@ -39,8 +40,11 @@ html
                     e.onclick=async()=>{
                         let newsid=e.getAttribute("newsid")
                         let blocks;
-
-                        blocks =await axios.get("/news/"+id);
+                        if(e.getAttribute("isarchive"))
+                            blocks =await axios.get("/archblocks/"+id);
+                        else
+                            blocks =await axios.get("/blocks/"+id);
+                        document.querySelector(".blockContainer").innerHTML = blocks.data
                     }
 
                 })
