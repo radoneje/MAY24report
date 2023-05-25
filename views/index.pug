@@ -65,8 +65,12 @@ html
                 let dt=await axios.get("/news/"+id);
                 document.querySelector(".newsContainer").innerHTML=dt.data
                 document.querySelectorAll(".newsItem").forEach(e=>{
+                    let newsid=e.getAttribute("newsid")
+                    e.querySelector(".scriptBtn").onclick=()=>{
+                        window.open("http://may.stv.local:10200/BlockScript.aspx?NewsId="+newsid, '_blank', 'width=' + window.screen.availWidth / 2 + ',height=' + window.screen.availHeight / 2 + ',resizable=1')
+                    }
                     e.onclick=async()=>{
-                        let newsid=e.getAttribute("newsid")
+
                         let blocks;
                         if(e.getAttribute("isarchive"))
                             blocks =await axios.get("/archblocks/"+newsid);
@@ -77,7 +81,7 @@ html
                             let a=e.querySelector(".blockItemText").innerHTML
                             e.querySelector(".blockItemText").innerHTML=a.replace(/(\(\([^\)]*(?:\)[^\)]+)*\)\))/gm, "<div style='color:red'>$1</div>")
                             e.querySelector(".blockItemTitleWr").onclick=()=>{
-                                e.classList.toggle("expand")
+                                e.classList.toggle("expand");
                             }
                         })
                     }
