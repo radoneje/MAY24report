@@ -53,8 +53,18 @@ app.get('/BlockScript', async (req, res) => {
         blockTable="archblocks"
     }
     let news= await knex(table).where( {id:newsid}).where({Deleted:0}).orderBy("NewsDate","desc")
-    res.json(news)
-    //res.render("blocks", {blocks:r})
+    if(news.length==0)
+        return res.sendStatus(404);
+    let n=news[0];
+    let blocks=await knex(blockTable).where({NewsId:newsid, Deleted:0}).orderBy("SortOrder")
+
+    let t=await knex("PrintTemplates").orderBy("name");
+    let templates=[];
+    t.forEach(tt=>{
+        templates.push({name:tt.name,val:JSON.stringify({news:tt.news,block:tt.block})})
+    })
+
+    res.render("script", {news:n,blocks, templates})
 })
 
 
