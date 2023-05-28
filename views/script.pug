@@ -17,10 +17,15 @@ html
                  border-style: solid;
                  border-width: 1px;
             }
+            @media print{
+                .noPrint{
+                    display: none;
+                }
+            }
         body
             .container
                 #app
-                    .mt-2
+                    .mt-2.noPrint
                         select#template(onchange="reloadTemplate()")
                             each t in templates
                                 option(value=t.value) #{t.name}
