@@ -67,22 +67,22 @@ html
                         .replace(/\$NewsDuration/g,secToText(news.Duration))
                         .replace(/\$NewsCronoTask/g,secToText(news.TaskTime))
                         .replace(/\$NewsCronoCalk/g,secToText(news.CalcTime))
-                        .replace(/\$NewsCronoReal/g,secToText(()=>{
+                        .replace(/\$NewsCronoReal/g,(t)=>{secToText(()=>{
                             let total=0;
                             blocks.forEach(block=>{
                                 console.log(total)
                                 total+=  block.BlockTime>0?block.BlockTime:block.CalcTime
                             });
                             return total;
-                        }))
-                        .replace(/\$NewsChronoReal/g, secToText(() => {
+                        })})
+                        .replace(/\$NewsChronoReal/g,(t)=>{ secToText(() => {
                             let total = 0;
                             blocks.forEach(block => {
                                 console.log(total)
                                 total += block.BlockTime > 0 ? block.BlockTime : block.CalcTime
                             });
                             return total;
-                        }))
+                        })})
                         .replace(/\$NewsSourceLabel/g,news.Cassete)
                         .replace(/\$NewsTimeCode/g,secToText(news.Time_Code))
 
