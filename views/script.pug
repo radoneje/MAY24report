@@ -31,6 +31,7 @@ html
                             .replace(/>/igm, "&gt;")
                             .replace(/\r\n/igm, "<br>")
                             .replace(/\n/igm, "<br>")
+                            .replace(/(\(\([^\)]*(?:\)[^\)]+)*\)\))/gm,"<div class='sot'>$1</div>")
                     }
                     catch (e) {
                         console.warn(text)
