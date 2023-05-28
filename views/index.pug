@@ -106,7 +106,7 @@ html
                             if(textElem) {
                                 let a = textElem.innerHTML
                                 textElem.innerHTML = a
-                                    .replace(/(\(\([^\)]*(?:\)[^\)]+)*\)\))/gm, "<div style='color:red'>$1</div>")
+                                    .replace(/(\(\([^\)]*(?:\)[^\)]+)*\)\))/gm, "<span style='color:red'>$1</span>")
                                     .replace(/[\r\n]{2,}/g,"\n\n")
                                 console.log(JSON.stringify( textElem.innerHTML))
                             }
