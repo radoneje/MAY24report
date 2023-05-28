@@ -52,7 +52,7 @@ app.get('/BlockScript', async (req, res) => {
         table = "arcnews";
         blockTable="archblocks"
     }
-    let news= await knex(table).where( {newsId:newsid}).where({Deleted:0}).orderBy("newsdate","desc")
+    let news= await knex(table).where( {id:newsid}).where({Deleted:0}).orderBy("newsdate","desc")
     res.json(news)
     //res.render("blocks", {blocks:r})
 })
