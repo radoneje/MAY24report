@@ -75,8 +75,8 @@ html
                         .replace(/\$NewsDuration/g,secToText(news.Duration))
                         .replace(/\$NewsCronoTask/g,secToText(news.TaskTime))
                         .replace(/\$NewsCronoCalk/g,secToText(news.CalcTime))
-                        .replace(/\$NewsCronoReal/g,(t)=>{return totalTime()})
-                        .replace(/\$NewsChronoReal/g,(t)=>{return totalTime()})
+                        .replace(/\$NewsCronoReal/g,(t)=>{return secToText(totalTime())})
+                        .replace(/\$NewsChronoReal/g,(t)=>{return secToText(totalTime())})
                         .replace(/\$NewsSourceLabel/g,news.Cassete)
                         .replace(/\$NewsTimeCode/g,secToText(news.Time_Code))
 
