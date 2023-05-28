@@ -89,7 +89,7 @@ html
     body
         .container
             #app
-                a.mt-4(href="http://may.stv.local") Вернуться к основному окну
+                input.mt-4(type="button" onclick="documemt.location.href='http://may.stv.local'" value="Вернуться к основному окну")
                 select.mt-2( class="form-select" aria-label="Default select example" onchange="changeProg(this.value)")
                     option(value=0) Выберите программу
                     each p in prog
