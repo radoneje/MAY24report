@@ -67,8 +67,12 @@ html
                 document.querySelector(".newsContainer").innerHTML=dt.data
                 document.querySelectorAll(".newsItem").forEach(e=>{
                     let newsid=e.getAttribute("newsid")
+                    let isArchive=e.getAttribute("isarchive")
                     e.querySelector(".scriptBtn").onclick=()=>{
-                        window.open("http://may.stv.local/BlockScript.aspx?NewsId="+newsid, '_blank', 'width=' + window.screen.availWidth / 2 + ',height=' + window.screen.availHeight / 2 + ',resizable=1')
+                        let url="BlockScript?"+newsid;
+                        if(isArchive)
+                            url+="&isarchive=true";
+                        window.open(url,'_blank', 'width=' + window.screen.availWidth / 2 + ',height=' + window.screen.availHeight / 2 + ',resizable=1')
                     }
                     e.onclick=async()=>{
 
