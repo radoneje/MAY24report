@@ -69,12 +69,15 @@ html
                         .replace(/\$NewsCronoCalk/g,secToText(news.CalcTime))
                         .replace(/\$NewsCronoReal/g,secToText(()=>{
                             let total=0;
-                            blocks.forEach(block=>{total+=  block.BlockTime>0?block.BlockTime:block.CalcTime});
+                            blocks.forEach(block=>{
+                                total+=  block.BlockTime>0?block.BlockTime:block.CalcTime
+                            });
                             return total;
                         }))
                         .replace(/\$NewsChronoReal/g, secToText(() => {
                             let total = 0;
                             blocks.forEach(block => {
+                                console.log(total)
                                 total += block.BlockTime > 0 ? block.BlockTime : block.CalcTime
                             });
                             return total;
