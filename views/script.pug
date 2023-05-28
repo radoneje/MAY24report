@@ -30,6 +30,7 @@ html
                     let blocksHtml=""
                     blocks.forEach(block=>{
                         let blockHtml=template.block;
+                        blockHtml=blockHtml.replace(/\@BLOCKDEPEND/gm, "")
                         blocksHtml+=blockHtml;
                     })
                     html=html.replace("@BLOCK",blocksHtml)
