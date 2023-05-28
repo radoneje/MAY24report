@@ -37,6 +37,14 @@ html
                         return ""
                     }
                 }
+                const secToText=(totalSeconds)=>{
+                    hours = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
+                    totalSeconds %= 3600;
+                    minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
+                    seconds = String(totalSeconds % 60).padStart(2, "0");
+                    return hours + ":" + minutes + ":" + seconds
+
+                }
                 const reloadTemplate=()=>{
                     let template=JSON.parse(document.getElementById("template").value)
                     let box=document.getElementById("scriptContainer")
@@ -51,15 +59,15 @@ html
                             .replace(/\$BlockOperator/g, block.operator?replaceSpecialCh(block.operator):"")
                             .replace(/\$BlockJockey/g, block.jockey?replaceSpecialCh(block.jockey):"")
                             .replace(/\$BlockCutter/g, block.cutter?replaceSpecialCh(block.cutter):"")
-                            .replace(/\$BlockCronoReal/g, replaceSpecialCh(block.BlockTime))
-                            .replace(/\$BlockCronoTask/g, replaceSpecialCh(block.TaskTime))
-                            .replace(/\$BlockCronoCalc/g, replaceSpecialCh(block.CalcTime))
+                            .replace(/\$BlockCronoReal/g, secToText(block.BlockTime))
+                            .replace(/\$BlockCronoTask/g, secToText(block.TaskTime))
+                            .replace(/\$BlockCronoCalc/g, secToText(block.CalcTime))
                             .replace(/\$BlockReady/g, replaceSpecialCh(block.Ready?"True":"False"))
                             .replace(/\$BlockApprove/g, replaceSpecialCh(block.Approve?"True":"False"))
                             .replace(/\$BlockTypeId/g, replaceSpecialCh(block.BLockType))
                             .replace(/\$BlockType/g, replaceSpecialCh(block.typename))
-                            .replace(/\$BlockNumber/g, replaceSpecialCh(block.Sort))
-                            .replace(/\$BlockId/g, replaceSpecialCh(block.id))
+                            .replace(/\$BlockNumber/g, (block.Sort))
+                            .replace(/\$BlockId/g, (block.id))
                             .replace(/\$TextLang1/g, replaceSpecialCh(block.TextLang1))
                             .replace(/\$TextLang2/g, replaceSpecialCh(block.TextLang2))
                             .replace(/\$TextLang3/g, replaceSpecialCh(block.TextLang2))
