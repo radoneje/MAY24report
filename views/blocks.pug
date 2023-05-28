@@ -2,7 +2,7 @@
     each b in blocks
         .blockItem.mt-2(id=b.id ready=b.Ready approve=b.Approve)
             .blockItemTitleWr
-                .blockItemType #{b.type}
+                .blockItemType #{b.type} !{JSON.stringify(b)}
                 .blockItemTitle #{b.Name}
             if(b.BlockText.length<2)
                 .blockItemText ==НЕТ ТЕКСТА==
