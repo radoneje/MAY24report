@@ -14,7 +14,7 @@ html
         body
             .container
                 #app
-                    select.mt-2#template(onchange="reloadTemplate")
+                    select.mt-2#template(onchange="reloadTemplate()")
                         each t in templates
                             option(value=t.value) #{t.name}
                     #scriptContainer.mt-4
@@ -24,3 +24,4 @@ html
                     let box=document.getElementById("scriptContainer")
                     box.innerHTML=template.news
                 }
+                reloadTemplate()
