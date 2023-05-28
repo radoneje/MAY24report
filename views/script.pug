@@ -56,7 +56,21 @@ html
                 const reloadTemplate=()=>{
                     let template=JSON.parse(document.getElementById("template").value)
                     let box=document.getElementById("scriptContainer")
-                    let html=template.news;
+                    console.log(news[0])
+                    let html=template.news
+                        .replace(/\$/g,"")
+                        .replace(/\$/g,"")
+                        .replace(/\$/g,"")
+                        .replace(/\$/g,"")
+                        .replace(/\$/g,"")
+                        .replace(/\$/g,"")
+                        .replace(/\$/g,"")
+                        .replace(/\$/g,"")
+                        .replace(/\$/g,"")
+                        .replace(/\$/g,"")
+                        .replace(/\$/g,"")
+                        .replace(/\$/g,"")
+
                     let blocksHtml=""
                     blocks.forEach(block=>{
                         let blockHtml=new String(template.block)
@@ -79,6 +93,9 @@ html
                             .replace(/\$TextLang1/g, replaceSpecialCh(block.TextLang1))
                             .replace(/\$TextLang2/g, replaceSpecialCh(block.TextLang2))
                             .replace(/\$TextLang3/g, replaceSpecialCh(block.TextLang2))
+                            .replace(/\@BLOCKFLAG/g, replaceSpecialCh(''))
+                            .replace(/\@BLOCKDEPEND/g, replaceSpecialCh(''))
+
 
 
 
@@ -90,30 +107,4 @@ html
                 }
                 reloadTemplate()
 
-                /*
 
-                "id": "937761295535471",
-                               "name": "Анонс соцсети ",
-                               "typename": "Студия",
-                               "blocktype": 3,
-                               "CreatorId": 356,
-                               "author": "Шишков Никита Игоревич",
-                               "OperatorId": 2005697520,
-                               "operator": null,
-                               "JockeyId": 2005697520,
-                               "jockey": null,
-                               "CutterId": 0,
-                               "cutter": null,
-                               "NewsId": "799554384220434",
-                               "ParentId": "0",
-                               "BlockTime": 0,
-                               "TaskTime": 0,
-                               "CalcTime": 26,
-                               "BlockText": "Ставрополье претендует на звание делового центра всего Северного Кавказа. И как регион готовится ко Дню Победы? «Итоги на Своём», 6 мая в 8:30 и 13:30, 7 мая в 20:30. \r\n\r\n1) Выставка\r\n2) Репетиция парада \r\n\r\nСТАВРОПОЛЬЕ ПРЕТЕНДУЕТ НА ЗВАНИЕ ДЕЛОВОГО ЦЕНТРА ВСЕГО СЕВЕРНОГО КАВКАЗА. КАК РЕГИОН ГОТОВИТСЯ КО ДНЮ ПОБЕДЫ? «ИТОГИ НА СВОЁМ», 6 МАЯ В 8:30 И 13:30, 7 МАЯ В 20:30\r\n\r\n#инвестиции #минводы #выставка экономика #деньги #деньпобеды #парад #9мая ",
-                               "Sort": 190,
-                               "Ready": true,
-                               "Approve": true,
-                               "TextLang1": "",
-                               "TextLang2": "",
-                               "TextLang3": ""
-                */
