@@ -1,6 +1,6 @@
 .news
     each n in news
-        .newsItem.mb-4(isArchive=n.isArchive newsid=n.id)
+        .newsItem.mb-3(isArchive=n.isArchive newsid=n.id)
             .newsItemTitle #{n.Name}
             .newsItemDate #{n.dt}
             .newsButton.mt-1
