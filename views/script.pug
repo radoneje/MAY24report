@@ -39,6 +39,25 @@ html
                         let blockHtml=new String(template.block)
                         blockHtml=blockHtml
                             .replace(/\$BlockName/g, replaceSpecialCh(block.name))
+                            .replace(/\$BlockText/g, replaceSpecialCh(block.BlockText))
+                            .replace(/\$BlockAutor/g, block.author?replaceSpecialCh(block.author):"")
+                            .replace(/\$BlockOperator/g, block.operator?replaceSpecialCh(block.operator):"")
+                            .replace(/\$BlockJockey/g, block.jockey?replaceSpecialCh(block.jockey):"")
+                            .replace(/\$BlockCutter/g, block.cutter?replaceSpecialCh(block.cutter):"")
+                            .replace(/\$BlockCronoReal/g, replaceSpecialCh(block.BlockTime))
+                            .replace(/\$BlockCronoTask/g, replaceSpecialCh(block.TaskTime))
+                            .replace(/\$BlockCronoCalc/g, replaceSpecialCh(block.CalcTime))
+                            .replace(/\$BlockReady/g, replaceSpecialCh(block.Ready?"True":"False"))
+                            .replace(/\$BlockApprove/g, replaceSpecialCh(block.Approve?"True":"False"))
+                            .replace(/\$BlockTypeId/g, replaceSpecialCh(block.BLockType))
+                            .replace(/\$BlockType/g, replaceSpecialCh(block.typename))
+                            .replace(/\$BlockNumber/g, replaceSpecialCh(block.Sort))
+                            .replace(/\$BlockId/g, replaceSpecialCh(block.id))
+                            .replace(/\$TextLang1/g, replaceSpecialCh(block.TextLang1))
+                            .replace(/\$TextLang2/g, replaceSpecialCh(block.TextLang2))
+                            .replace(/\$TextLang3/g, replaceSpecialCh(block.TextLang2))
+
+
 
                         blocksHtml+=blockHtml
 
@@ -47,7 +66,9 @@ html
                     box.innerHTML=html
                 }
                 reloadTemplate()
+
                 /*
+
                 "id": "937761295535471",
                                "name": "Анонс соцсети ",
                                "typename": "Студия",
