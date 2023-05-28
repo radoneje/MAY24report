@@ -22,17 +22,27 @@ html
                 let news = !{JSON.stringify(news)};
                 let blocks = !{JSON.stringify(blocks)};
             script.
+                const replaceSpecialCh=(text)=>{
 
+                    return text
+                        .replace(/</igm, "&lt;")
+                        .replace(/>/igm, "&gt;")
+                        .replace(/\r\n/igm,"<br>")
+                        .replace(/\n/igm,"<br>")
+                }
                 const reloadTemplate=()=>{
                     let template=JSON.parse(document.getElementById("template").value)
                     let box=document.getElementById("scriptContainer")
                     let html=template.news;
                     let blocksHtml=""
                     blocks.forEach(block=>{
-                        let blockHtml=template.block;
-                        blockHtml=blockHtml.replace(/\@BLOCKDEPEND/gm, "")
-                        .replace('\@BLOCKFLAG',"")
-                        blocksHtml+=blockHtml;
+                        let blTemplate=replaceSpecialCh(template.block);
+                        blTemplate=blTemplate
+                            .replace(/\@BLOCKDEPEND/gm, "")
+                            .replace('\@BLOCKFLAG',"")
+
+                        blocksHtml+=blTemplate;
+
                     })
                     html=html.replace("@BLOCK",blocksHtml)
                     box.innerHTML=html
