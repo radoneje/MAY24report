@@ -4,4 +4,7 @@
             .blockItemTitleWr
                 .blockItemType #{b.type}
                 .blockItemTitle #{b.Name}
-            .blockItemText #{b.BlockText}
+            if(b.BlockText.length<2)
+                .blockItemText ==НЕТ ТЕКСТА==
+            else
+                .blockItemText #{b.BlockText}
