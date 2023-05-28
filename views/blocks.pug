@@ -1,14 +1,14 @@
 .blocksWr
     each b in blocks
-        .blockItem.mt-2(id="block+"+b.id ready=b.Ready approve=b.Approve)
+        .blockItem.mt-2(id=b.Id ready=b.Ready approve=b.Approve)
             .blockItemTitleWr
-                .blockItemType #{b.type} !{JSON.stringify(b)}
+                .blockItemType #{b.type}
                 .blockItemTitle #{b.Name}
             if(b.BlockText.length<2)
                 .blockItemText ==НЕТ ТЕКСТА==
             else
                 .blockItemText
                     .mt-2
-                        input.CopyBtn(type="button" value="Копировать весь текст" onclick="copyBlockText("+b.id+")")
+                        input.CopyBtn(type="button" value="Копировать весь текст" onclick="copyBlockText("+b.Id+")")
                         input(type="button" value="Свернуть" onclick="this.parentNode.parentNode.parentNode.classList.remove('expand')")
                     .blockItemTextValue.mt-2   #{b.BlockText}
