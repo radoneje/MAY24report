@@ -85,16 +85,20 @@ html
                 font-weight: bold;
             }
             .blockItem{}
+            .pgmSelector{
+                font-size: 18px;
+                font-weight: bold;
+            }
 
     body
         .container
             #app
-                input.mt-4(type="button" onclick="document.location.href='http://may.stv.local'" value="Вернуться к основному окну")
+                input.pgmSelector.mt-4(type="button" onclick="document.location.href='http://may.stv.local'" value="Вернуться к основному окну")
                 select.mt-2( class="form-select" aria-label="Default select example" onchange="changeProg(this.value)")
                     option(value=0) Выберите программу
                     each p in prog
                         option(value=p.id) !{p.Name}
-            .workContainer
+            .workContainer.mt-4
                 .newsContainer
                 .blockContainer
         script.
