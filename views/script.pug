@@ -36,12 +36,15 @@ html
                     let html=template.news;
                     let blocksHtml=""
                     blocks.forEach(block=>{
+                        let blockHtml=new String(template.block)
+                        /*
                         let blTemplate=replaceSpecialCh(template.block);
                         blTemplate=blTemplate
                             .replace(/\@BLOCKDEPEND/gm, "")
                             .replace('\@BLOCKFLAG',"")
 
-                        blocksHtml+=blTemplate;
+                        blocksHtml+=blTemplate;*/
+                        blocksHtml+=blockHtml
 
                     })
                     html=html.replace("@BLOCK",blocksHtml)
