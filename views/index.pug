@@ -29,9 +29,7 @@ html
                 height: calc(100vh - 52px);
                 overflow-y: auto;
             }
-            .blockItem{
-                border-bottom: 2px solid gray;
-            }
+
             .blockItemTitleWr{
                 display: flex;
                 align-items: flex-start;
@@ -39,6 +37,10 @@ html
                 cursor: pointer;
                 background-color: #e2e2e2;
                 padding: 4px;
+            }
+
+            .blockItem[ready] .blockItemTitleWr{
+                    background-color: #e2e2e2;
             }
             .blockItemType{
                 font-weight: bold;
