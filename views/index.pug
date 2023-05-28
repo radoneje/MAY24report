@@ -108,7 +108,7 @@ html
                                 textElem.innerHTML = a
                                     .replace(/(\(\([^\)]*(?:\)[^\)]+)*\)\))/gm, "<div style='color:red'>$1</div>")
                                     .replace(/[\r\n]{2,}/g,"\n\n")
-                                console.log(textElem.innerHTML)
+                                console.log(JSON.stringify( textElem.innerHTML))
                             }
                             e.querySelector(".blockItemTitleWr").onclick=()=>{
                                 e.classList.toggle("expand");
