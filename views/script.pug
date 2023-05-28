@@ -67,7 +67,7 @@ html
                         .replace(/\$NewsDuration/g,secToText(news.Duration))
                         .replace(/\$NewsCronoTask/g,secToText(news.TaskTime))
                         .replace(/\$NewsCronoCalk/g,secToText(news.CalcTime))
-                        .replace(/\$NewsCronoReal/g,(t)=>{secToText(()=>{
+                        .replace(/\$NewsCronoReal/g,(t)=>{return secToText(()=>{
                             let total=0;
                             blocks.forEach(block=>{
                                 console.log(total)
@@ -75,7 +75,7 @@ html
                             });
                             return total;
                         })})
-                        .replace(/\$NewsChronoReal/g,(t)=>{ secToText(() => {
+                        .replace(/\$NewsChronoReal/g,(t)=>{ return secToText(() => {
                             let total = 0;
                             blocks.forEach(block => {
                                 console.log(total)
