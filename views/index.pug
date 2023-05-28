@@ -102,8 +102,8 @@ html
                             blocks =await axios.get("/blocks/"+newsid);
                         document.querySelector(".blockContainer").innerHTML = blocks.data
                         document.querySelectorAll(".blockItem").forEach(e=>{
-                            let a=e.querySelector(".blockItemText").innerHTML
-                            e.querySelector(".blockItemText").innerHTML=a.replace(/(\(\([^\)]*(?:\)[^\)]+)*\)\))/gm, "<div style='color:red'>$1</div>")
+                            let a=e.querySelector(".blockItemTextValue").innerHTML
+                            e.querySelector(".blockItemTextValue").innerHTML=a.replace(/(\(\([^\)]*(?:\)[^\)]+)*\)\))/gm, "<div style='color:red'>$1</div>")
                             e.querySelector(".blockItemTitleWr").onclick=()=>{
                                 e.classList.toggle("expand");
                             }
