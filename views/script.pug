@@ -72,6 +72,13 @@ html
                             blocks.forEach(block=>{total+=  block.BlockTime>0?block.BlockTime:block.CalcTime});
                             return total;
                         }))
+                        .replace(/\$NewsChronoReal/g, secToText(() => {
+                            let total = 0;
+                            blocks.forEach(block => {
+                                total += block.BlockTime > 0 ? block.BlockTime : block.CalcTime
+                            });
+                            return total;
+                        }))
                         .replace(/\$NewsSourceLabel/g,news.Cassete)
                         .replace(/\$NewsTimeCode/g,secToText(news.Time_Code))
 
