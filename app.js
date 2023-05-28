@@ -64,7 +64,7 @@ app.get('/BlockScript', async (req, res) => {
         templates.push({name:tt.name,value:JSON.stringify({news:tt.news,block:tt.block})})
     })
 
-    res.render("script", {news:JSON.stringify(news), blocks:JSON.stringify(blocks), templates})
+    res.render("script", {news:n,blocks, templates})
 })
 
 
