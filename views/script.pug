@@ -70,6 +70,7 @@ html
                         .replace(/\$NewsCronoReal/g,secToText(()=>{
                             let total=0;
                             blocks.forEach(block=>{
+                                console.log(total)
                                 total+=  block.BlockTime>0?block.BlockTime:block.CalcTime
                             });
                             return total;
