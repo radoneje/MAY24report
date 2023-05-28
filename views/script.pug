@@ -20,9 +20,11 @@ html
         body
             .container
                 #app
-                    select.mt-2#template(onchange="reloadTemplate()")
-                        each t in templates
-                            option(value=t.value) #{t.name}
+                    .mt-2
+                        select#template(onchange="reloadTemplate()")
+                            each t in templates
+                                option(value=t.value) #{t.name}
+                        input(type="button" value="Печать" onclick="window.print()")
                     #scriptContainer.mt-4
             script.
                 let news = !{JSON.stringify(news)};
