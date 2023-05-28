@@ -61,7 +61,7 @@ app.get('/BlockScript', async (req, res) => {
     let t=await knex("PrintTemplates").orderBy("name");
     let templates=[];
     t.forEach(tt=>{
-        templates.push({name:tt.name,val:JSON.stringify({news:tt.news,block:tt.block})})
+        templates.push({name:tt.name,value:JSON.stringify({news:tt.news,block:tt.block})})
     })
 
     res.render("script", {news:n,blocks, templates})
