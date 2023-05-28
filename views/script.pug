@@ -23,7 +23,8 @@ html
                 let blocks = !{JSON.stringify(blocks)};
             script.
                 const replaceSpecialCh=(text)=>{
-
+                    if(!text)
+                        return ""
                     return text
                         .replace(/</igm, "&lt;")
                         .replace(/>/igm, "&gt;")
