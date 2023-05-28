@@ -66,7 +66,7 @@ html
                 const totalTime=()=>{
                     let total = 0;
                     blocks.forEach(block => {
-                        console.log(total)
+
                         total += block.BlockTime > 0 ? block.BlockTime : block.CalcTime
                     });
                     return total;
@@ -74,7 +74,7 @@ html
                 const reloadTemplate=()=>{
                     let template=JSON.parse(document.getElementById("template").value)
                     let box=document.getElementById("scriptContainer")
-                    console.log(news)
+
                     let html=template.news
                         .replace(/\$NewsId/g, news.id)
                         .replace(/\$NewsName/g,news.Name)
