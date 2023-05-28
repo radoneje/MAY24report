@@ -105,7 +105,9 @@ html
                             let textElem=e.querySelector(".blockItemTextValue");
                             if(textElem) {
                                 let a = textElem.innerHTML
-                                textElem.innerHTML = a.replace(/(\(\([^\)]*(?:\)[^\)]+)*\)\))/gm, "<div style='color:red'>$1</div>")
+                                textElem.innerHTML = a
+                                    .replace(/(\(\([^\)]*(?:\)[^\)]+)*\)\))/gm, "<div style='color:red'>$1</div>")
+                                    .replace(/[\r\n]{2+}/g,"\n\n")
                             }
                             e.querySelector(".blockItemTitleWr").onclick=()=>{
                                 e.classList.toggle("expand");
