@@ -53,6 +53,14 @@ html
                     return hours + ":" + minutes + ":" + seconds
 
                 }
+                const totalTime=()=>{
+                    let total = 0;
+                    blocks.forEach(block => {
+                        console.log(total)
+                        total += block.BlockTime > 0 ? block.BlockTime : block.CalcTime
+                    });
+                    return total;
+                }
                 const reloadTemplate=()=>{
                     let template=JSON.parse(document.getElementById("template").value)
                     let box=document.getElementById("scriptContainer")
@@ -67,22 +75,8 @@ html
                         .replace(/\$NewsDuration/g,secToText(news.Duration))
                         .replace(/\$NewsCronoTask/g,secToText(news.TaskTime))
                         .replace(/\$NewsCronoCalk/g,secToText(news.CalcTime))
-                        .replace(/\$NewsCronoReal/g,(t)=>{return secToText(()=>{
-                            let total=0;
-                            blocks.forEach(block=>{
-                                console.log(total)
-                                total+=  block.BlockTime>0?block.BlockTime:block.CalcTime
-                            });
-                            return total;
-                        })})
-                        .replace(/\$NewsChronoReal/g,(t)=>{ return secToText(() => {
-                            let total = 0;
-                            blocks.forEach(block => {
-                                console.log(total)
-                                total += block.BlockTime > 0 ? block.BlockTime : block.CalcTime
-                            });
-                            return total;
-                        })})
+                        .replace(/\$NewsCronoReal/g,(t)=>{return totalTime()})
+                        .replace(/\$NewsChronoReal/g,(t)=>{return totalTime()})
                         .replace(/\$NewsSourceLabel/g,news.Cassete)
                         .replace(/\$NewsTimeCode/g,secToText(news.Time_Code))
 
