@@ -32,7 +32,7 @@ html
                         let blockHtml=template.block;
                         blocksHtml+=blockHtml;
                     })
-                    html.replace("@BLOCK",blocksHtml)
+                    html=html.replace("@BLOCK",blocksHtml)
                     box.innerHTML=html
                 }
                 reloadTemplate()
