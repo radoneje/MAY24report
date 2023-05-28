@@ -29,7 +29,8 @@ html
                         return text
                             .replace(/</igm, "&lt;")
                             .replace(/>/igm, "&gt;")
-                            .replace(/\r\n/igm, "<br>")
+                            .replace(/\r\n/igm, "\n")
+                            .replace(/[\n]{2,}/igm, "\n\n")
                             .replace(/\n/igm, "<br>")
                             .replace(/(\(\([^\)]*(?:\)[^\)]+)*\)\))/gm,"<div class='sot'>$1</div>")
                     }
