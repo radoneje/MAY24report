@@ -23,13 +23,19 @@ html
                 let blocks = !{JSON.stringify(blocks)};
             script.
                 const replaceSpecialCh=(text)=>{
-                    if(!text)
+                    try {
+                        if (!text)
+                            return ""
+                        return text
+                            .replace(/</igm, "&lt;")
+                            .replace(/>/igm, "&gt;")
+                            .replace(/\r\n/igm, "<br>")
+                            .replace(/\n/igm, "<br>")
+                    }
+                    catch (e) {
+                        console.warn(text)
                         return ""
-                    return text
-                        .replace(/</igm, "&lt;")
-                        .replace(/>/igm, "&gt;")
-                        .replace(/\r\n/igm,"<br>")
-                        .replace(/\n/igm,"<br>")
+                    }
                 }
                 const reloadTemplate=()=>{
                     let template=JSON.parse(document.getElementById("template").value)
