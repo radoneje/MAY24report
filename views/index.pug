@@ -69,7 +69,7 @@ html
                     let newsid=e.getAttribute("newsid")
                     let isArchive=e.getAttribute("isarchive")
                     e.querySelector(".scriptBtn").onclick=()=>{
-                        let url="BlockScript?"+newsid;
+                        let url="BlockScript?newsid="+newsid;
                         if(isArchive)
                             url+="&isarchive=true";
                         window.open(url,'_blank', 'width=' + window.screen.availWidth / 2 + ',height=' + window.screen.availHeight / 2 + ',resizable=1')

@@ -44,6 +44,19 @@ app.get('/archblocks/:id', async (req, res) => {
     let r= await knex("vNode_archblocks").where( {NewsId:req.params.id}).orderBy("sort")
     res.render("blocks", {blocks:r})
 })
+app.get('/BlockScript', async (req, res) => {
+    let newsid=req.query.newsid;
+    let table="news";
+    let blockTable="blocks"
+    if(req.query.isarchive) {
+        table = "arcnews";
+        blockTable="archblocks"
+    }
+    let news= await knex(table).where( {NewsId:newsid}).where({Deleted:0}).orderBy("newsdate","desc")
+    res.json(news)
+    //res.render("blocks", {blocks:r})
+})
+
 
 
 
