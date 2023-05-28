@@ -19,8 +19,10 @@ html
                             option(value=t.value) #{t.name}
                     #scriptContainer.mt-4
             script.
-                let blocks=!{JSON.stringify(news)}
-                let blocks=!{JSON.stringify(blocks)}
+                let blocks = !{JSON.stringify(news)};
+                let blocks = !{JSON.stringify(blocks)};
+            script.
+
                 const reloadTemplate=()=>{
                     let template=JSON.parse(document.getElementById("template").value)
                     let box=document.getElementById("scriptContainer")
