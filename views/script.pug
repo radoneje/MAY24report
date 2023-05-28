@@ -37,6 +37,8 @@ html
                     let blocksHtml=""
                     blocks.forEach(block=>{
                         let blockHtml=new String(template.block)
+                        blockHtml=blockHtml
+                            .replace(/\$BlockName/g, replaceSpecialCh(block.Name))
                         /*
                         let blTemplate=replaceSpecialCh(template.block);
                         blTemplate=blTemplate
