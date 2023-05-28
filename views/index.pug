@@ -28,6 +28,10 @@ html
             .newsItem:hover{
                 background: #eeeeee;
             }
+            .newsItem.active{
+                color: white;
+                background: #206a20;
+            }
             .blockContainer{
                 width: calc(100% - 300px);
                 box-sizing: border-box;
@@ -91,6 +95,7 @@ html
                 let dt=await axios.get("/news/"+id);
                 document.querySelector(".newsContainer").innerHTML=dt.data
                 document.querySelectorAll(".newsItem").forEach(e=>{
+
                     let newsid=e.getAttribute("newsid")
                     let isArchive=e.getAttribute("isarchive")
                     e.querySelector(".scriptBtn").onclick=()=>{
@@ -100,7 +105,8 @@ html
                         window.open(url,'_blank', 'width=' + window.screen.availWidth / 2 + ',height=' + window.screen.availHeight / 2 + ',resizable=1')
                     }
                     e.onclick=async()=>{
-
+                        document.querySelectorAll(".newsItem").forEach(as=>{as.classList.remove("active")})
+                        e.classList.add("active")
                         let blocks;
                         if(e.getAttribute("isarchive"))
                             blocks =await axios.get("/archblocks/"+newsid);
