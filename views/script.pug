@@ -58,18 +58,24 @@ html
                     let box=document.getElementById("scriptContainer")
                     console.log(news)
                     let html=template.news
-                        .replace(/\$/g,"")
-                        .replace(/\$/g,"")
-                        .replace(/\$/g,"")
-                        .replace(/\$/g,"")
-                        .replace(/\$/g,"")
-                        .replace(/\$/g,"")
-                        .replace(/\$/g,"")
-                        .replace(/\$/g,"")
-                        .replace(/\$/g,"")
-                        .replace(/\$/g,"")
-                        .replace(/\$/g,"")
-                        .replace(/\$/g,"")
+                        .replace(/\$NewsId/g, news.id)
+                        .replace(/\$NewsName/g,news.Name)
+                        .replace(/\$NewsOwner/g,"")
+                        .replace(/\$EditorId/g,news.EditorId)
+
+                        .replace(/\$NewsDate/g,news.NewsDate)
+                        .replace(/\$NewsDuration/g,secToText(news.Duration))
+                        .replace(/\$NewsCronoTask/g,secToText(news.TaskTime))
+                        .replace(/\$NewsCronoCalk/g,secToText(news.CalcTime))
+                        .replace(/\$NewsChronoReal/g,secToText(()=>{
+                            let total=0;
+                            blocks.forEach(block=>{total+=  block.BlockTime>0?block.BlockTime:block.CalcTime});
+                            return total;
+                        }))
+                        .replace(/\$NewsSourceLabel/g,news.Cassete)
+                        .replace(/\$NewsTimeCode/g,secToText(news.Time_Code))
+
+
 
                     let blocksHtml=""
                     blocks.forEach(block=>{
