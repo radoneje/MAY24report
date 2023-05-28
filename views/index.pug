@@ -91,6 +91,19 @@ html
                 .newsContainer
                 .blockContainer
         script.
+            function copyText(txt) {
+                var textArea = document.createElement("textarea");
+                textArea.style.position = 'fixed';
+                textArea.style.top = 0;
+                textArea.style.left = 0;
+                textArea.style.opacity = 0;
+                textArea.value = txt;
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea)
+            }
             async function changeProg(id){
                 let dt=await axios.get("/news/"+id);
                 document.querySelector(".newsContainer").innerHTML=dt.data
