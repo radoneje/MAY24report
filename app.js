@@ -47,7 +47,7 @@ app.get('/archblocks/:id', async (req, res) => {
 app.get('/BlockScript', async (req, res) => {
     let newsid=req.query.newsid;
     let table="news";
-    let blockTable="vNode_ScriptArchBlocks"
+    let blockTable="vNode_ScriptBlocks"
     if(req.query.isarchive) {
         table = "arcnews";
         blockTable="vNode_ScriptArchBlocks"
