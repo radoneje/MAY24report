@@ -56,7 +56,7 @@ app.get('/BlockScript', async (req, res) => {
     if(news.length==0)
         return res.sendStatus(404);
     let n=news[0];
-    let blocks=await knex(blockTable).where({NewsId:newsid, Deleted:0}).orderBy("SortOrder")
+    let blocks=await knex(blockTable).where({NewsId:newsid, Deleted:0}).orderBy("Sort")
 
     let t=await knex("PrintTemplates").orderBy("name");
     let templates=[];
