@@ -91,6 +91,15 @@ html
                 .newsContainer
                 .blockContainer
         script.
+            function copyBlockText(blockId){
+                let wr=document.getElementById(blockId);
+                let btn=wr.querySelector(".CopyBtn")
+                let textCtrl=wr.querySelector(".blockItemTextValue")
+                let tmp=btn.value;
+                btn.value="Весь текст скопирован"
+                copyText(textCtrl.innerText)
+                setTimeout(()=>{btn.value=tmp},1000)
+            }
             function copyText(txt) {
                 var textArea = document.createElement("textarea");
                 textArea.style.position = 'fixed';
