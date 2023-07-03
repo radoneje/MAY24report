@@ -3,7 +3,9 @@
         .blockItem.mt-2(id=b.Id ready=b.Ready approve=b.Approve)
             .blockItemTitleWr
                 .blockItemType #{b.type}
-                .blockItemTitle #{b.Name}
+                div
+                    .blockItemTitle #{b.Name}
+                    div{b.username}
             if(b.BlockText.length<2)
                 .blockItemText ==НЕТ ТЕКСТА==
             else

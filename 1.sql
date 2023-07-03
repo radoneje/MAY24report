@@ -89,10 +89,11 @@ GO
 /****** Скрипт для команды SelectTopNRows из среды SSMS  ******/
 CREATE VIEW [dbo].[vNode_blocks]
 AS
-SELECT        b.Id, b.Name, b.NewsId, b.ParentId, b.BLockType, b.CreatorId, b.OperatorId, b.JockeyId, b.BlockTime, b.TaskTime, b.CalcTime, b.BlockText, b.Sort, b.Description, b.Ready, b.Approve, b.deleted, b.TextLang1, b.TextLang2,
-                         b.TextLang3, b.CutterId, b.isChanged, b.isDisable, bt.TypeName AS type
-FROM            dbo.Blocks AS b LEFT OUTER JOIN
+SELECT        b.*, bt.TypeName AS type, u.username
+FROM            dbo.Blocks AS b
+LEFT OUTER JOIN
                          dbo.BlockType AS bt ON b.BLockType = bt.id
+LEFT JOIN users u ON u.userid=b.creatorid
 WHERE        (b.deleted = 0) AND (b.ParentId = 0)
 GO
 
@@ -113,6 +114,7 @@ SELECT n.*, u.UserName as editor
 
   FROM [NewsFactory].[dbo].[ArcNews] n
   LEFT JOIN users u ON n.EditorId=u.userid
+
    WHERE n.[NewsDate]<=GETDATE() AND n.[NewsDate]>DATEADD(month,-2,GETDATE()) AND n.Deleted=0
 GO
 
@@ -127,11 +129,12 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE VIEW [dbo].[vNode_archblocks] AS
-SELECT b.*, bt.TypeName as type
+SELECT b.*, bt.TypeName as type, u.username
 
   FROM ArchBlocks  b
   LEFT JOIN BlockType bt on b.BLockType=bt.id
-  WHERE Deleted=0
+  LEFT JOIN users u ON u.userid=b.creatorid
+  WHERE b.Deleted=0 AND (b.ParentId = 0)
 GO
 
 
