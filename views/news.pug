@@ -3,6 +3,7 @@
         .newsItem.mb-3(isArchive=n.isArchive newsid=n.id)
             .newsItemTitle #{n.Name}
             .newsItemDate #{n.dt}
+            .newsItemDate #{n.editor}
             .newsButton.mt-1
                 input(type="button" value="Выбрать")
                 input.scriptBtn(type="button" value="Скрипт")
