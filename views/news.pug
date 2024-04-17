@@ -1,7 +1,5 @@
 .news
-    if n.length>0
 
-    .mt-1
     each n in news
         .newsItem.mb-3(isArchive=n.isArchive newsid=n.id)
             .newsItemTitle #{n.Name}
