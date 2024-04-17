@@ -233,7 +233,7 @@ html
                                 })
 
                                 let editorsString = editors.reduce((i, item) => {
-                                    i = i + " " + item + ","
+                                    return i + " " + item + ","
                                 }, "")
                                 e.querySelector(".blockEditorName").innerText = editorsString
                                 console.log(editors, editorsString)
