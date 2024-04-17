@@ -139,55 +139,7 @@ html
 
                     let newsid=e.getAttribute("newsid")
                     let isArchive=e.getAttribute("isarchive")
-                    e.querySelector(".staffBtn").onclick = async (event) => {
-                        event.preventDefault()
-                        event.stopPropagation();
-                        document.querySelectorAll(".newsItem").forEach(as => {
-                            as.classList.remove("active")
-                        })
-                        e.classList.add("active")
-                        let blocks;
-                        if (e.getAttribute("isarchive"))
-                            blocks = await axios.get("/archblocks/" + newsid);
-                        else
-                            blocks = await axios.get("/blocks/" + newsid);
-                        document.querySelector(".blockContainer").innerHTML = blocks.data
-                        document.querySelectorAll(".blockItem").forEach(e => {
-                            let textElem = e.querySelector(".blockItemTextValue");
-                            if (textElem) {
-                                let a = textElem.innerHTML
-                                textElem.innerHTML = a
-                                    .replace(/(\(\([^\)]*(?:\)[^\)]+)*\)\))/gm, "<span style='color:red'>$1</span>")
-                                    .replace(/[\r\n]{2,}/g, "\n\n")
-                                let src=textElem.innerText;
-                                let editors=[];
-                                let m=src.match(/\(\(МОНТ\s?([^\)]+)\)\)/gm)
-                                if(m)
-                                    m.forEach(mm=>{editors.push(mm.replace("((МОНТ ", "").replace("))", ""))})
-                                editors = editors.filter(function (elem, pos) {return editors.indexOf(elem) == pos;})
-                                //console.log(editors)
-                                let titles = [];
-                                 m = src.match(/\(\(ТИТР\s?([^\)]+)\)\)/gm)
-                                if (m)
-                                    m.forEach(mm => {
-                                        titles.push(mm.replace("((ТИТР ", "").replace("))", ""))
-                                    })
-                                titles = titles.filter(function (elem, pos) {
-                                    return titles.indexOf(elem) == pos;
-                                })
-                                console.log(titles)
 
-
-                                //textElem.innerHTML="выборка"
-                                //console.log(JSON.stringify(textElem.innerHTML))
-                            }
-                            e.querySelector(".blockItemTitleWr").onclick = () => {
-                                e.classList.toggle("expand");
-                            }
-
-                        })
-
-                    }
                     e.querySelector(".scriptBtn").onclick=()=>{
                         let url="BlockScript?newsid="+newsid;
                         if(isArchive)
@@ -239,7 +191,15 @@ html
                                 .replace(/^\s+/,"")
                                 .replace(/,$/,"")
                                 e.querySelector(".blockEditorName").innerHTML = editorsString
-                                console.log(editors, editorsString, e.querySelector(".blockEditorName"))
+
+                                let titlesString = titles.reduce((i, item) => {
+                                    return i + " " + item + ","
+                                }, "")
+                                titlesString = titlesString
+                                    .replace(/^\s+/, "")
+                                    .replace(/,$/, "")
+                                e.querySelector(".blockTitleName").innerHTML = titlesString
+
 
                             }
                             e.querySelector(".blockItemTitleWr").onclick=()=>{
