@@ -161,6 +161,10 @@ html
                                             mm.replace("((МОНТ ", "").replace("))", "")
                                         )
                                     })
+
+                                editors = editors.filter(function (elem, pos) {
+                                    return editors.indexOf(elem) == pos;
+                                })
                                 console.log(editors)
 
                                 textElem.innerHTML="выборка"
