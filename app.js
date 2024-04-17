@@ -6,7 +6,7 @@ const port = 3000
 var knex = require('knex')({
     client: 'mssql',
     connection: {
-        server : 'localhost',
+        server : 'sql',
         user : 'NewsFactoryUser',
         password : 'ib',
         database : 'NewsFactory'
