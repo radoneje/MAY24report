@@ -48,7 +48,7 @@ html
                 justify-content: left;
                 cursor: pointer;
                 background-color: #eeeeee;
-                padding: 4px;
+                padding: 12px;
                 border-left: 2px solid gray;
             }
 
@@ -95,7 +95,7 @@ html
             }
             .blockAuthorTitle{
                 display: inline-block;
-                width: 200px;
+                width: 185px;
             }
 
     body
@@ -176,6 +176,8 @@ html
                                     return titles.indexOf(elem) == pos;
                                 })
                                 console.log(titles)
+                                let editorsString=editors.reduce((i, item)=>{i=i+" "+item+","}, "")
+                                blockItem.querySelector(".blockEditorName").innerText=editorsString
 
                                 //textElem.innerHTML="выборка"
                                 //console.log(JSON.stringify(textElem.innerHTML))
