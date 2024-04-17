@@ -235,8 +235,8 @@ html
                                 let editorsString = editors.reduce((i, item) => {
                                     return i + " " + item + ","
                                 }, "")
-                                e.querySelector(".blockEditorName").innerText = editorsString
-                                console.log(editors, editorsString)
+                                e.querySelector(".blockEditorName").innerHTML = editorsString
+                                console.log(editors, editorsString, e)
 
                             }
                             e.querySelector(".blockItemTitleWr").onclick=()=>{
