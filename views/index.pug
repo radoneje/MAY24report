@@ -156,8 +156,12 @@ html
                                 let m=src.match(/\(\(МОНТ\s?([^\)]+)\)\)/gm)
                                 if(m)
                                     m.forEach(mm=>{
-                                        console.log(mm)
+
+                                        editors.push(
+                                            mm.replace("((МОНТ ", "").replace("))", "")
+                                        )
                                     })
+                                console.log(editors)
 
                                 textElem.innerHTML="выборка"
                                 //console.log(JSON.stringify(textElem.innerHTML))
