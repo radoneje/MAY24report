@@ -5,7 +5,9 @@
                 .blockItemType #{b.type}
                 div
                     .blockItemTitle #{b.Name}
-                    div #{b.username}
+                    div.blockAuthor
+                        span.blockAuthorTitle Автор:
+                        span.blockAuthorName #{b.username}
             if(b.BlockText.length<2)
                 .blockItemText ==НЕТ ТЕКСТА==
             else

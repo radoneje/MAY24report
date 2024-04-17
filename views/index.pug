@@ -89,6 +89,10 @@ html
                 font-size: 18px;
                 font-weight: bold;
             }
+            .blockAuthorName{
+                margin-left:12px;
+                font-weight: bold;
+            }
 
     body
         .container
@@ -169,7 +173,7 @@ html
                                 })
                                 console.log(titles)
 
-                                textElem.innerHTML="выборка"
+                                //textElem.innerHTML="выборка"
                                 //console.log(JSON.stringify(textElem.innerHTML))
                             }
                             e.querySelector(".blockItemTitleWr").onclick = () => {
@@ -201,7 +205,29 @@ html
                                 textElem.innerHTML = a
                                     .replace(/(\(\([^\)]*(?:\)[^\)]+)*\)\))/gm, "<span style='color:red'>$1</span>")
                                     .replace(/[\r\n]{2,}/g,"\n\n")
-                                console.log(JSON.stringify( textElem.innerHTML))
+                                //console.log(JSON.stringify( textElem.innerHTML))
+                                let src = textElem.innerText;
+                                let editors = [];
+                                let m = src.match(/\(\(МОНТ\s?([^\)]+)\)\)/gm)
+                                if (m)
+                                    m.forEach(mm => {
+                                        editors.push(mm.replace("((МОНТ ", "").replace("))", ""))
+                                    })
+                                editors = editors.filter(function (elem, pos) {
+                                    return editors.indexOf(elem) == pos;
+                                })
+                                //console.log(editors)
+                                let titles = [];
+                                m = src.match(/\(\(ТИТР\s?([^\)]+)\)\)/gm)
+                                if (m)
+                                    m.forEach(mm => {
+                                        titles.push(mm.replace("((ТИТР ", "").replace("))", ""))
+                                    })
+                                titles = titles.filter(function (elem, pos) {
+                                    return titles.indexOf(elem) == pos;
+                                })
+                                console.log(titles)
+
                             }
                             e.querySelector(".blockItemTitleWr").onclick=()=>{
                                 e.classList.toggle("expand");
