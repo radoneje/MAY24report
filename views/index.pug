@@ -131,6 +131,36 @@ html
 
                     let newsid=e.getAttribute("newsid")
                     let isArchive=e.getAttribute("isarchive")
+                    e.querySelector(".scriptBtn").onclick = async (event) => {
+                        event.preventDefault()
+                        event.stopPropagation();
+                        document.querySelectorAll(".newsItem").forEach(as => {
+                            as.classList.remove("active")
+                        })
+                        e.classList.add("active")
+                        let blocks;
+                        if (e.getAttribute("isarchive"))
+                            blocks = await axios.get("/archblocks/" + newsid);
+                        else
+                            blocks = await axios.get("/blocks/" + newsid);
+                        document.querySelector(".blockContainer").innerHTML = blocks.data
+                        document.querySelectorAll(".blockItem").forEach(e => {
+                            let textElem = e.querySelector(".blockItemTextValue");
+                            if (textElem) {
+                                let a = textElem.innerHTML
+                                textElem.innerHTML = a
+                                    .replace(/(\(\([^\)]*(?:\)[^\)]+)*\)\))/gm, "<span style='color:red'>$1</span>")
+                                    .replace(/[\r\n]{2,}/g, "\n\n")
+                                extElem.innerHTML="выборка"
+                                console.log(JSON.stringify(textElem.innerHTML))
+                            }
+                            e.querySelector(".blockItemTitleWr").onclick = () => {
+                                e.classList.toggle("expand");
+                            }
+
+                        })
+
+                    }
                     e.querySelector(".scriptBtn").onclick=()=>{
                         let url="BlockScript?newsid="+newsid;
                         if(isArchive)
