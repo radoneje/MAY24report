@@ -151,7 +151,7 @@ html
                                 textElem.innerHTML = a
                                     .replace(/(\(\([^\)]*(?:\)[^\)]+)*\)\))/gm, "<span style='color:red'>$1</span>")
                                     .replace(/[\r\n]{2,}/g, "\n\n")
-                                extElem.innerHTML="выборка"
+                                textElem.innerHTML="выборка"
                                 console.log(JSON.stringify(textElem.innerHTML))
                             }
                             e.querySelector(".blockItemTitleWr").onclick = () => {
