@@ -155,17 +155,19 @@ html
                                 let editors=[];
                                 let m=src.match(/\(\(МОНТ\s?([^\)]+)\)\)/gm)
                                 if(m)
-                                    m.forEach(mm=>{
-
-                                        editors.push(
-                                            mm.replace("((МОНТ ", "").replace("))", "")
-                                        )
+                                    m.forEach(mm=>{editors.push(mm.replace("((МОНТ ", "").replace("))", ""))})
+                                editors = editors.filter(function (elem, pos) {return editors.indexOf(elem) == pos;})
+                                //console.log(editors)
+                                let titles = [];
+                                let m = src.match(/\(\(ТИТР\s?([^\)]+)\)\)/gm)
+                                if (m)
+                                    m.forEach(mm => {
+                                        titles.push(mm.replace("((ТИТР ", "").replace("))", ""))
                                     })
-
-                                editors = editors.filter(function (elem, pos) {
-                                    return editors.indexOf(elem) == pos;
+                                titles = titles.filter(function (elem, pos) {
+                                    return titles.indexOf(elem) == pos;
                                 })
-                                console.log(editors)
+                                console.log(titles)
 
                                 textElem.innerHTML="выборка"
                                 //console.log(JSON.stringify(textElem.innerHTML))
