@@ -191,10 +191,11 @@ html
                                 .replace(/^\s+/,"")
                                 .replace(/,$/,"")
                                 e.querySelector(".blockEditorName").innerHTML = editorsString
-
+                                console.log(editorsString, editors)
                                 let titlesString = titles.reduce((i, item) => {
                                     return i + " " + item + ","
                                 }, "")
+
                                 titlesString = titlesString
                                     .replace(/^\s+/, "")
                                     .replace(/,$/, "")
