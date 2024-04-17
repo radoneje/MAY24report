@@ -159,7 +159,7 @@ html
                                 editors = editors.filter(function (elem, pos) {return editors.indexOf(elem) == pos;})
                                 //console.log(editors)
                                 let titles = [];
-                                let m = src.match(/\(\(ТИТР\s?([^\)]+)\)\)/gm)
+                                 m = src.match(/\(\(ТИТР\s?([^\)]+)\)\)/gm)
                                 if (m)
                                     m.forEach(mm => {
                                         titles.push(mm.replace("((ТИТР ", "").replace("))", ""))
