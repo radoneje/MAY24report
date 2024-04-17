@@ -152,8 +152,13 @@ html
                                     .replace(/(\(\([^\)]*(?:\)[^\)]+)*\)\))/gm, "<span style='color:red'>$1</span>")
                                     .replace(/[\r\n]{2,}/g, "\n\n")
                                 let src=textElem.innerText;
+                                let editors=[];
                                 let m=src.match(/\(\(МОНТ\s?([^\)]+)\)\)/gm)
-                                console.log(m)
+                                if(m)
+                                    m.forEach(mm=>{
+                                        console.log(mm)
+                                    })
+
                                 textElem.innerHTML="выборка"
                                 //console.log(JSON.stringify(textElem.innerHTML))
                             }
