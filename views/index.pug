@@ -176,8 +176,7 @@ html
                                     return titles.indexOf(elem) == pos;
                                 })
                                 console.log(titles)
-                                let editorsString=editors.reduce((i, item)=>{i=i+" "+item+","}, "")
-                                blockItem.querySelector(".blockEditorName").innerText=editorsString
+
 
                                 //textElem.innerHTML="выборка"
                                 //console.log(JSON.stringify(textElem.innerHTML))
@@ -232,7 +231,12 @@ html
                                 titles = titles.filter(function (elem, pos) {
                                     return titles.indexOf(elem) == pos;
                                 })
-                                console.log(titles)
+
+                                let editorsString = editors.reduce((i, item) => {
+                                    i = i + " " + item + ","
+                                }, "")
+                                blockItem.querySelector(".blockEditorName").innerText = editorsString
+                                console.log(editors, editorsString)
 
                             }
                             e.querySelector(".blockItemTitleWr").onclick=()=>{
